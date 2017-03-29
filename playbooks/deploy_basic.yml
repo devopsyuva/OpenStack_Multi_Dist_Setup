@@ -9,8 +9,8 @@
      yum: name={{ item }} state=present update_cache=yes
      with_items:
        - centos-release-openstack-mitaka
-       - "https://rdoproject.org/repos/rdo-release.rpm"
-     when: ansible_os_family == "RedHat"
+#       - "https://rdoproject.org/repos/rdo-release.rpm"
+     when: ansible_os_family == "RedHat" and ansible_distribution == "CentOS"
 
    - name: Create repo file for Mitaka
      lineinfile:
