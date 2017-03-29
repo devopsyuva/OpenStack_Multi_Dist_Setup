@@ -4,7 +4,7 @@ controller_localhost: localhost
 controller: "{{ hostvars[inventory_hostname]['ansible_hostname'] }}"
 #controller_ipaddress: "{{ hostvars[groups['singlenode'][0]]['ansible_' + interface_name ]['ipv4']['address'] }}" 
 controller_ipaddress: "{{ hostvars[inventory_hostname]['ansible_' + interface_name ]['ipv4']['address'] }}" 
-interface_name: enp0s8
+interface_name: "{{ ansible_interfaces[2] }}" #update the array value according to the interface count from facts output
 mysql_root_password: test123
 rabbitmq_password: test123
 keystonedb_password: test123
