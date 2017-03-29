@@ -1,4 +1,5 @@
 ---
+# I have faced issue on CentOS machine, while updating packages. Install deltarpm package using command: yum install deltarpm
 - hosts: all
   tasks:
    - name: Install openstack repo package on Debain machine
@@ -9,6 +10,7 @@
      yum: name={{ item }} state=present update_cache=yes
      with_items:
        - centos-release-openstack-mitaka
+       - deltarpm
 #       - "https://rdoproject.org/repos/rdo-release.rpm"
      when: ansible_os_family == "RedHat" and ansible_distribution == "CentOS"
 
