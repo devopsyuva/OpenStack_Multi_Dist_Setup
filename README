@@ -1,5 +1,5 @@
-Openstack Mitaka setup on single node (Ubuntu/Debian):
-######################################################
+Openstack Mitaka setup on single node:
+######################################
 
 1) Components that will be installed for the openstack setup in our environment.
 
