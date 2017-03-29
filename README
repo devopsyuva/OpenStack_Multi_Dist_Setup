@@ -122,7 +122,8 @@ How to run the playbook:
 
 	e) Now, run the playbook site.yml which will install from basic components like repo, database, etc to dashboard.
 		ansible-playbook all site.yml
-
+	Note: Disable the firewalld service and selinux on the Redhat machines before deploying openstack.
+	
 	f) If you facing issue while executing the above playbook, run playbook individually.
 		Ex: ansible-playbook playbook/deploy_basic.yml
 
