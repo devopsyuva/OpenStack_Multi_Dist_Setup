@@ -1,0 +1,25 @@
+---
+# tasks file for dashboard
+- name: Install openstack-dashboard in controller node
+  apt: name={{ item }} state=present force=yes
+  with_items:
+   - openstack-dashboard
+  when: ansible_os_family == "Debian"
+
+- name: Install openstack-dashboard in controller node
+  yum: name={{ item }} state=present
+  with_items:
+   - openstack-dashboard
+  when: ansible_os_family == "RedHat"
+
+- name: Configure local_settings.py
+  template: src=local_settings.py.j2 dest=/etc/openstack-dashboard/local_settings.py backup=yes
+  when: ansible_os_family == "Debian"
+
+- name: Restart Apache2
+  service: name=apache2 state=reloaded
+  when: ansible_os_family == "Debian"
+
+- name: Restart Apache2
+  systemd: name=httpd state=reloaded
+  when: ansible_os_family == "RedHat"
