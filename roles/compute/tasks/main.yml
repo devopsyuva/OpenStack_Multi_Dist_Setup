@@ -95,6 +95,7 @@
 - name: restart all nova service
   service: name={{ item }} state=restarted
   with_items:
+    - libvirtd
     - nova-api
     - nova-consoleauth
     - nova-scheduler
@@ -106,6 +107,7 @@
 - name: restart all nova service on Redhat 7 machine
   service: name={{ item }} state=restarted
   with_items:
+    - libvirtd
     - openstack-nova-api
     - openstack-nova-consoleauth
     - openstack-nova-scheduler
