@@ -1,5 +1,5 @@
-Openstack Mitaka setup on single node:
-######################################
+Openstack Mitaka setup on single node (All Distributions):
+##########################################################
 
 1) Components that will be installed for the openstack setup in our environment.
 
@@ -13,8 +13,8 @@ Openstack Mitaka setup on single node:
 
 3) Endpoints for all the services are created on localhost name. Ex: http://localhost:35357
 
-4) For bridge use any one of the interface Ex: eth0/enp0s3 (provider), assign proper interface name in group_vars/all file
-	Ex: controller_interface: eth0
+4) For bridge use any one of the interface Ex: eth0/enp0s3 (provider), assign proper interface array number in group_vars/all file
+	Ex: controller_interface:
 
 5) This code is tested successfully on Debain/Redhat machines.
 
@@ -109,7 +109,6 @@ How to run the playbook:
 	a) Add the following entries according to your environment.
 		1) update the hosts file with the server hostname
 		2) change the group_vars/all file accordingly, like admin password, users password etc.,
-		3) group file is password protected (test123)
 
 	b) Copy the public of the ansible user to the node on which you will install Openstack.
 		ssh-keygen (to create keypair) and ssh-copy-id user@<ip/hostname> (copy the public key to remote server/local)
@@ -118,10 +117,10 @@ How to run the playbook:
 		ansible all -m ping  --> If this step is successfull, then execute the site.yml playbook
 
 	d) check the syntax of the ansible code which you have downloaded.
-		ansible-playbook all site.yml --syntax-check
+		ansible-playbook site.yml --syntax-check
 
 	e) Now, run the playbook site.yml which will install from basic components like repo, database, etc to dashboard.
-		ansible-playbook all site.yml
+		ansible-playbook site.yml
 	Note: Disable the firewalld service and selinux on the Redhat machines before deploying openstack.
 	
 	f) If you facing issue while executing the above playbook, run playbook individually.
