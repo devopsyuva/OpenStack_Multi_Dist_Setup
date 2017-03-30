@@ -26,6 +26,10 @@
     - MySQL-python
   when: ansible_os_family == "RedHat"
 
+- name: start mariadb service on CentOS/RedHat machines
+  systemd: name=mariadb state=started enabled=yes
+  when: ansible_os_family == "RedHat"
+
 - name: Update the mysql root password
   command: mysqladmin -uroot password '{{ mysql_root_password }}'
   when: ansible_os_family == "RedHat"
